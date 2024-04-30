@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Joke Generator</title>
+  <title>Random Emoji Generator</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -21,37 +21,28 @@
       cursor: pointer;
     }
 
-    #jokeDisplay {
+    #emojiDisplay {
       margin-top: 20px;
-      font-style: italic;
+      font-size: 36px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Random Joke Generator</h1>
-    <button id="getJokeBtn">Get Joke</button>
-    <div id="jokeDisplay"></div>
+    <h1>Random Emoji Generator</h1>
+    <button id="getEmojiBtn">Get Emoji</button>
+    <div id="emojiDisplay"></div>
   </div>
 
   <script>
-    document.getElementById('getJokeBtn').addEventListener('click', function() {
-      // Fetch a random joke from the "icanhazdadjoke" API
-      fetch('https://icanhazdadjoke.com/', {
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        // Display the joke on the webpage
-        document.getElementById('jokeDisplay').textContent = data.joke;
-      })
-      .catch(error => {
-        console.error('Error fetching joke:', error);
-        // Display error message if joke retrieval fails
-        document.getElementById('jokeDisplay').textContent = 'Failed to fetch joke. Please try again later.';
-      });
+    const emojis = ['😀', '😂', '😊', '😍', '🥳', '🎉', '👍', '❤️', '🌟', '🚀'];
+
+    document.getElementById('getEmojiBtn').addEventListener('click', function() {
+      // Generate a random index to select a random emoji from the array
+      const randomIndex = Math.floor(Math.random() * emojis.length);
+      
+      // Display the randomly selected emoji
+      document.getElementById('emojiDisplay').textContent = emojis[randomIndex];
     });
   </script>
 </body>
